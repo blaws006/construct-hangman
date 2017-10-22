@@ -1,0 +1,22 @@
+{
+  "name": "construct-hangman",
+  "version": "1.0.0",
+  "description": "hangman for the console.",
+  "main": "hangman.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blaws006/construct-hangman.git"
+  },
+  "author": "Brandon Lawson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blaws006/construct-hangman/issues"
+  },
+  "homepage": "https://github.com/blaws006/construct-hangman#readme",
+  "dependencies": {
+    "inquirer": "^3.3.0"
+  }
+}
