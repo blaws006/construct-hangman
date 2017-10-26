@@ -8,7 +8,11 @@ Word.prototype.printWord = function () {
 };
 //New word object
 var test = new Word("Test");
+var another = new Word("New Test");
 //Here's how we run the new object method
-// test.printWord();
+// another.printWord();
 //Exporting the new object
-module.exports = test;
+module.exports = {
+    another: another,
+    test: test
+};
