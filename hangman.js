@@ -32,6 +32,7 @@ var game = function () {
             if (letterSplit.includes(userGuess.letter)) {
                 remaining--;
                 console.log("Correct!");
+                letters.replaceLetter().replace(/" _ "/gi, userGuess.letter)
                 console.log("You have " + remaining + " turns left!");
             } else {
                 remaining--;
