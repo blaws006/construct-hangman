@@ -18,4 +18,6 @@ Letter.prototype.replaceLetter = function () {
 
 var underscore = new Letter(wordList[chosen]);
 
-underscore.replaceLetter();
+// underscore.replaceLetter();
+
+module.exports = underscore;
