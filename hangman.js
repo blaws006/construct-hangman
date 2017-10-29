@@ -1,45 +1,37 @@
 var letters = require("./letter");
 var inquirer = require("inquirer");
 
-
-
-var letterSplit = letters.letters.split("");
-
-letterSplit = letterSplit.filter(function (n) {
-    return n != ' ' || undefined
-});
-letterSplit = letterSplit.toString();
-console.log(letterSplit);
-// var under = letters.replaceLetter();
-// var underArr = under.split("")
-var guessLetters = [];
+guessedLetter = [];
+wrongGuesses = [];
+numGuesses = 10;
 var count = 0;
-var remaining = 10;
 var game = function () {
     if (count < 10) {
         inquirer.prompt([{
             name: "letter",
             message: "Guess a letter!"
         }]).then(function (userGuess) {
-            if (guessLetters.includes(userGuess.letter)){
-                console.log("Already guessed! Try again");
-                count++;
-            } else{
-            count++;
-            guessLetters.push(userGuess.letter);
-            console.log(guessLetters);
-          
-            if (letterSplit.includes(userGuess.letter)) {
-                remaining--;
-                console.log("Correct!");
-                letters.replaceLetter().replace(/" _ "/gi, userGuess.letter)
-                console.log("You have " + remaining + " turns left!");
-            } else {
-                remaining--;
-                console.log("Incorrect!");
-                console.log("You have " + remaining + " turns left!");
+            var isLetterInWord = false;
+            guessedLetter.push(userGuess.letter);
+            console.log(guessedLetter);
+            for (var i = 0; i < letters.numBlanks; i++) {
+                if (letters.chosen[i] == userGuess.letter) {
+                    isLetterInWord = true;
+                    console.log("Letter found");
+                }
             }
-        }
+            if (isLetterInWord) {
+                for (var i = 0; i < letters.numBlanks; i++) {
+                    if (letters.chosen[i] == userGuess.letter) {
+                        letters.blanksAndSuccesses[i] = userGuess.letter;
+                    }
+                }
+            } else {
+                wrongGuesses.push(userGuess.letter);
+                numGuesses--; 
+            }
+            console.log(letters.blanksAndSuccesses);
+            count++;
             game();
         });
     } else {
